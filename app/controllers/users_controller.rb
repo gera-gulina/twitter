@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      flash[:success] = "#{@user.name, capitalize}", "ghbd"
+      flash = { success: "It worked!", error: "It failed." }
       redirect_to @user
    
     else      
