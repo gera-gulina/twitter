@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+  resources :sessions,   only: [:new, :create, :destroy]
+  resources :microposts, only: [:create, :destroy]
+
+  
   get 'users/show'
 
   resources :users
@@ -12,11 +21,7 @@ Rails.application.routes.draw do
   match '/help', to: 'static_pages#help', via: :get
   match '/about', to: 'static_pages#about', via: :get
   match '/contact', to: 'static_pages#contact', via: :get
-  
-
-  resources :microposts
-
-  resources :users
+   
   
   
   # The priority is based upon order of creation: first created -> highest priority.
